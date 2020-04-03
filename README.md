@@ -127,30 +127,150 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
     ```
 
 ![](images/21.jpg)
+![](images/22.jpg)
 
 10. La cantidad de CPU consumida es bastante grande y un conjunto considerable de peticiones concurrentes pueden hacer fallar nuestro servicio. Para solucionarlo usaremos una estrategia de Escalamiento Vertical. En Azure diríjase a la sección *size* y a continuación seleccione el tamaño `B2ms`.
 
 ![Imágen 3](images/part1/part1-vm-resize.png)
 
+Cantidad de CPU consumida:
+
+![](images/23.jpg)
+
+
 11. Una vez el cambio se vea reflejado, repita el paso 7, 8 y 9.
+
+Repetición paso 7:
+
+    * 1000000
+
+	![](images/24.jpg)
+
+    * 1010000
+
+	![](images/25.jpg)
+
+    * 1020000
+
+	![](images/26.jpg)
+
+    * 1030000
+
+	![](images/27.jpg)
+
+    * 1040000
+
+	![](images/28.jpg)
+
+    * 1050000
+
+	![](images/29.jpg)
+
+    * 1060000
+
+	![](images/30.jpg)
+
+    * 1070000
+
+	![](images/31.jpg)
+
+    * 1080000
+
+	![](images/32.jpg)
+
+    * 1090000    
+
+	![](images/33.jpg)
+
+
+Repetición paso 8:
+
+![](images/34.jpg)
+
+Repetición paso 9:
+
+![](images/35.jpg)
+
 12. Evalue el escenario de calidad asociado al requerimiento no funcional de escalabilidad y concluya si usando este modelo de escalabilidad logramos cumplirlo.
 13. Vuelva a dejar la VM en el tamaño inicial para evitar cobros adicionales.
 
 **Preguntas**
 
 1. ¿Cuántos y cuáles recursos crea Azure junto con la VM?
+
+![](images/36.jpg)
+
 2. ¿Brevemente describa para qué sirve cada recurso?
+
+- Red Virtual: Simulación de una red física con recursos de software y hardware
+- Cuenta de almacenamiento: contiene todos los objetos de datos de Azure
+- Máquina Virtual: Máquina virtual usada como tal
+- Dirección IP pública: Permite saber cuál es la dirección IP que se usa para la conexión saliente
+- Grupo de seguridad de red: Contiene reglas de seguridad que permiten o deniegan el tráfico de red entrante o saliente de recursos de Azure
+- Interfaz de red: Permite a la maquina virtual comunicarse con recursos en internet.
+- Disco:  Es la version virtualizada de la maquina que creamos, guarda el sistema operativo y otros componentes.
+
+
 3. ¿Al cerrar la conexión ssh con la VM, por qué se cae la aplicación que ejecutamos con el comando `npm FibonacciApp.js`? ¿Por qué debemos crear un *Inbound port rule* antes de acceder al servicio?
+
+Porque en ese momento se cierra la conexión necesaria para ejecutar la aplicación. Para tener una conexión por un puerto con la máquina y el servició que está proveyendo en todo momento.
+
 4. Adjunte tabla de tiempos e interprete por qué la función tarda tando tiempo.
+
+![](images/37.jpg)
+
+Porque resuelve la fórmula paso a paso, hace la sumatoria de todos y cada uno de los números anteriores al solicitado
+
 5. Adjunte imágen del consumo de CPU de la VM e interprete por qué la función consume esa cantidad de CPU.
+
+B1ls:
+
+![](images/20.jpg)
+
+B2ms:
+
+![](images/34.jpg)
+
+Porque para el primer caso, toda la CPU está destinada a resolver esta tarea, para el segundo tan solo la mitad.
+
 6. Adjunte la imagen del resumen de la ejecución de Postman. Interprete:
+
+B1ls:
+
+![](images/39.jpg)
+
+B2ms:
+
+![](images/38.jpg)
+
     * Tiempos de ejecución de cada petición.
+
+    Los tiempos de ejecución son muy similares
+
     * Si hubo fallos documentelos y explique.
+
+    Error ECONNRESET: Significa que el servidor cerró la conexión de una manera que probablemente no era normal.
+
 7. ¿Cuál es la diferencia entre los tamaños `B2ms` y `B1ls` (no solo busque especificaciones de infraestructura)?
+
+B1ls tiene: 1 vCPU, 0.5 GB de RAM, 2 discos de datos,  160 E/S,  4 GB de almacenamiento temporal
+B2ms tiene: 2 vCPU,   8 GB de RAM, 4 discos de datos, 1920 E/S, 16 GB de almacenamiento temporal
+
 8. ¿Aumentar el tamaño de la VM es una buena solución en este escenario?, ¿Qué pasa con la FibonacciApp cuando cambiamos el tamaño de la VM?
+
+No, es cierto que la CPU se satura menos aumentando el tamaño, pero los tiempos de respuesta son iguales o peores.
+
 9. ¿Qué pasa con la infraestructura cuando cambia el tamaño de la VM? ¿Qué efectos negativos implica?
+
+Sepresnetan errores de tipo ECONNRESET por la prisa de la máquina al responder a una solicitud sin haberla finalizado.
+
 10. ¿Hubo mejora en el consumo de CPU o en los tiempos de respuesta? Si/No ¿Por qué?
+
+Sí, se mejoró el consumo de CPU debido a que su capaciad de procesamiento es mayor, pero los tiempos no mejoraron debido a que el programa se sigue ejecutando secuencialmente, no es problema de capacidad sino del diseño del programa.
+
 11. Aumente la cantidad de ejecuciones paralelas del comando de postman a `4`. ¿El comportamiento del sistema es porcentualmente mejor?
+
+No, el comportamiento sigue siendo similar.
 
 ### Parte 2 - Escalabilidad horizontal
 
