@@ -142,46 +142,45 @@ Cantidad de CPU consumida:
 
 Repetición paso 7:
 
-    * 1000000
+* 1000000
 
-	![](images/24.jpg)
+![](images/24.jpg)
 
-    * 1010000
+* 1010000
 
-	![](images/25.jpg)
+![](images/25.jpg)
 
-    * 1020000
+* 1020000
 
-	![](images/26.jpg)
+![](images/26.jpg)
+	
+* 1030000
 
-    * 1030000
+![](images/27.jpg)
 
-	![](images/27.jpg)
+* 1040000
 
-    * 1040000
+![](images/28.jpg)
 
-	![](images/28.jpg)
+* 1050000
 
-    * 1050000
+![](images/29.jpg)
 
-	![](images/29.jpg)
+* 1060000
 
-    * 1060000
+![](images/30.jpg)
 
-	![](images/30.jpg)
+* 1070000
 
-    * 1070000
+![](images/31.jpg)
 
-	![](images/31.jpg)
+* 1080000
 
-    * 1080000
+![](images/32.jpg)
 
-	![](images/32.jpg)
+* 1090000    
 
-    * 1090000    
-
-	![](images/33.jpg)
-
+![](images/33.jpg)
 
 Repetición paso 8:
 
@@ -243,13 +242,13 @@ B2ms:
 
 ![](images/38.jpg)
 
-    * Tiempos de ejecución de cada petición.
+* Tiempos de ejecución de cada petición.
 
-    Los tiempos de ejecución son muy similares
+Los tiempos de ejecución son muy similares
 
-    * Si hubo fallos documentelos y explique.
+* Si hubo fallos documentelos y explique.
 
-    Error ECONNRESET: Significa que el servidor cerró la conexión de una manera que probablemente no era normal.
+Error ECONNRESET: Significa que el servidor cerró la conexión de una manera que probablemente no era normal.
 
 7. ¿Cuál es la diferencia entre los tamaños `B2ms` y `B1ls` (no solo busque especificaciones de infraestructura)?
 
