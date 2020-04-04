@@ -252,6 +252,7 @@ Error ECONNRESET: Significa que el servidor cerró la conexión de una manera qu
 7. ¿Cuál es la diferencia entre los tamaños `B2ms` y `B1ls` (no solo busque especificaciones de infraestructura)?
 
 B1ls tiene: 1 vCPU, 0.5 GB de RAM, 2 discos de datos,  160 E/S,  4 GB de almacenamiento temporal
+
 B2ms tiene: 2 vCPU,   8 GB de RAM, 4 discos de datos, 1920 E/S, 16 GB de almacenamiento temporal
 
 8. ¿Aumentar el tamaño de la VM es una buena solución en este escenario?, ¿Qué pasa con la FibonacciApp cuando cambiamos el tamaño de la VM?
@@ -260,7 +261,7 @@ No, es cierto que la CPU se satura menos aumentando el tamaño, pero los tiempos
 
 9. ¿Qué pasa con la infraestructura cuando cambia el tamaño de la VM? ¿Qué efectos negativos implica?
 
-Sepresnetan errores de tipo ECONNRESET por la prisa de la máquina al responder a una solicitud sin haberla finalizado.
+Se presentan errores de tipo ECONNRESET por concurrencia de solicutudes a una CPU saturada, esta no logra responder exitosamente.
 
 10. ¿Hubo mejora en el consumo de CPU o en los tiempos de respuesta? Si/No ¿Por qué?
 
